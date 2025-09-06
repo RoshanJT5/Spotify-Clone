@@ -1,15 +1,19 @@
 // --- State ---
 let albums = {};
-let songs = []; // This will hold the current playlist songs.
+let songs = [];
 let currentSong = 0;
 const audio = new Audio();
 
 const PLAY_ICON = "images/playbar.svg";
 const PAUSE_ICON = "images/pause.svg";
 
+// Get the correct base path for GitHub Pages
+// It will be empty locally or for a custom domain, but the repo name for GitHub Pages.
+const BASE_PATH = window.location.pathname.includes('/Spotify-Clone/') ? '/Spotify-Clone' : '';
+
 // --- Fetch & Albums ---
 async function fetchAlbums() {
-  const tryPaths = ["./songs.json", "./Songs/songs.json"];
+  const tryPaths = [`${BASE_PATH}/songs.json`, `${BASE_PATH}/Songs/songs.json`];
   for (const p of tryPaths) {
     try {
       const res = await fetch(p);
@@ -81,7 +85,8 @@ function setSong(index) {
     return;
   }
   currentSong = index;
-  audio.src = songs[currentSong];
+  // Use BASE_PATH to ensure the song URL is correct
+  audio.src = `${BASE_PATH}/${songs[currentSong]}`;
   audio.play().catch(() => {});
   updatePlaybar();
   highlightActiveInPlaylist();
@@ -175,7 +180,8 @@ async function renderAlbumCards() {
 
   for (const album of albumList) {
     try {
-      const res = await fetch(`Songs/${album}/info.json`);
+      // Use BASE_PATH for the info.json file
+      const res = await fetch(`${BASE_PATH}/Songs/${album}/info.json`);
       if (!res.ok) throw new Error("Info file not found");
       const info = await res.json();
       const card = document.createElement("div");
@@ -183,9 +189,9 @@ async function renderAlbumCards() {
       card.setAttribute("data-album", album);
       card.innerHTML = `
         <div class="play">
-          <img src="images/playbtn.svg" alt="">
+          <img src="${BASE_PATH}/images/playbtn.svg" alt="">
         </div>
-        <img src="Songs/${album}/card.jpeg" alt="${info.title}">
+        <img src="${BASE_PATH}/Songs/${album}/card.jpeg" alt="${info.title}">
         <h3>${info.title}</h3>
         <p>${info.description}</p>
       `;
@@ -302,17 +308,17 @@ function wireVolumeControls() {
     rangeInput.addEventListener("input", (e) => {
       const vol = e.target.value / 100;
       audio.volume = vol;
-      volumeIcon.src = vol === 0 ? "images/mute.svg" : "images/volume.svg";
+      volumeIcon.src = vol === 0 ? `${BASE_PATH}/images/mute.svg` : `${BASE_PATH}/images/volume.svg`;
     });
     volumeIcon.addEventListener("click", () => {
       if (audio.volume > 0) {
         audio.volume = 0;
         rangeInput.value = 0;
-        volumeIcon.src = "images/mute.svg";
+        volumeIcon.src = `${BASE_PATH}/images/mute.svg`;
       } else {
         audio.volume = 1;
         rangeInput.value = 100;
-        volumeIcon.src = "images/volume.svg";
+        volumeIcon.src = `${BASE_PATH}/images/volume.svg`;
       }
     });
   }
@@ -328,7 +334,8 @@ function getPlayPauseElement() {
 function setPlayPauseIcon() {
   const btn = getPlayPauseElement();
   if (!btn) return;
-  btn.src = audio.paused ? PLAY_ICON : PAUSE_ICON;
+  // Use BASE_PATH for the image sources
+  btn.src = audio.paused ? `${BASE_PATH}/${PLAY_ICON}` : `${BASE_PATH}/${PAUSE_ICON}`;
   btn.alt = audio.paused ? "Play" : "Pause";
 }
 function wirePlayPauseBtn() {
