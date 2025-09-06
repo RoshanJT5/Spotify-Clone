@@ -1,0 +1,238 @@
+/* Small Laptops (up to 1024px) */
+@media (max-width: 1024px) {
+  .search {
+    width: 80%;
+  }
+  .rightNav li {
+    display: none; /* hide Premium, Download, Support, | */
+  }
+  .playbar {
+    width: 65%;
+    height: 60px;
+    border-radius: 25px;
+    bottom: 20px;
+    padding: 10px;
+  }
+  .playback-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .songbtn {
+    left: 45%;
+    transform: translateX(-50%);
+    top: 10px;
+    gap: 12px;
+  }
+
+  .songinfo {
+    position: relative;
+    left: 0;
+    bottom: auto;
+    margin: 5px auto 0;
+    text-align: center;
+    width: 90%;
+    font-size: 12px;
+    /* display: none; */
+  }
+
+  .songtime {
+    position: absolute;
+    right: 15px;
+    bottom: 10px;
+    font-size: 12px;
+    width: 20%;
+  }
+
+  .seekbar {
+    width: 60%;
+    right: 55%;
+    transform: translateX(50%);
+    bottom: 5px;
+    bottom: 8.5px;
+  }
+
+  .volumebtn {
+    right: 13%;
+    bottom: 33px;
+  }
+
+  .volumebtn img {
+    height: 25px;
+  }
+
+  .range input {
+    width: 70px;
+  }
+}
+
+/* Tablet (up to 768px) */
+@media (max-width: 768px) {
+  .spotify-logo {
+    display: none;
+  }
+  .hamburger-logo {
+    display: block;
+    height: 40px;
+  }
+  .sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    height: 6%;
+    margin: 5%;
+    align-items: center;
+  }
+  .sidebar-logo {
+    display: block;
+    margin-bottom: 20px;
+    height: 100%;
+  }
+  .cross{
+    cursor: pointer;
+  }
+  .rightNav {
+    width: 35%;
+  }
+  .rightNav li {
+    display: none; /* hide Premium, Download, Support, | */
+  }
+
+  .left {
+    position: fixed;
+    left: -100%;
+    z-index: 1;
+    top: 0;
+    width: 100%;
+    justify-content: flex-start;
+    transition: all 0.5s ease-in-out;
+    height: 100%;
+  }
+  .playbar {
+    width: 87%;
+  }
+  .right {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 0;
+  }
+  .main-content {
+    width: 90%;
+  }
+  .cardContainer {
+    max-height: 80vh;
+    justify-content: center;
+    padding-bottom: 10vh;
+  }
+  .card {
+    width: 90%;
+  }
+  .leftNav {
+    width: 80%;
+  }
+  .play img {
+    width: 80px;
+  }
+  .play {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 100px;
+    right: 120px;
+  }
+  .songinfo{
+    width: 160px;
+    margin: 0;
+    height: 45px;
+    font-size: 0.81rem;
+  }
+}
+
+/* Mobile (up to 600px) */
+@media (max-width: 600px) {
+  .rightNav {
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .login-btn {
+    width: 100%; /* optional: make buttons full width on mobile */
+    text-align: center;
+  }
+  .rightNav li {
+    display: none; /* hide Premium, Download, Support, | */
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    gap: 0;
+  }
+  .search {
+    height: 30px;
+  }
+  .search img {
+    height: 10px;
+    padding: 5px;
+  }
+  .home-icon img {
+    height: 12px;
+  }
+  .home-icon {
+    width: 40px;
+    height: 30px;
+  }
+  #searchbox {
+    font-size: 0.5rem;
+    padding: 1px;
+  }
+  .leftNav {
+    margin-left: -15px;
+    gap: 12px;
+  }
+  .login-btn {
+    font-size: 0.54rem;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+  }
+  .rightNav {
+    width: 20%;
+    gap: 5px;
+    margin-right: 10px;
+  }
+
+  .play img {
+    width: 50px;
+  }
+  .volumebtn {
+    right: 5%;
+    bottom: 33px;
+  }
+  .volumebtn input {
+    height: 10px;
+  }
+  .playbar {
+    width: 88%;
+    left: 10px;
+  }
+  .songinfo{
+    width: 110px;
+    margin: 0;
+    height: 45px;
+    font-size: 0.71rem;
+  }
+}
+
+
+@media (max-width:380px) {
+  .songinfo{
+    width: 85px;
+    margin: 0;
+    height: 45px;
+    font-size: 0.55rem;
+    margin-top: 5px;
+  }
+}
